@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smartbooks — Online booking for Irish barbers</title>
+  <meta name="description" content="Online booking for barbers and small shops in Ireland. Customers book the chair. €25 a month. 14 days free.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="logo.webp">
+  <style>
+    :root {
+      --bg: #07080c;
+      --bg-2: #0c0e14;
+      --surface: #12151d;
+      --surface-2: #181c27;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-strong: rgba(255, 255, 255, 0.14);
+      --text: #f5f6f8;
+      --muted: #9aa3b2;
+      --dim: #6d7686;
+      --purple: #7c5cff;
+      --purple-2: #6b4cf0;
+      --purple-soft: rgba(124, 92, 255, 0.16);
+      --focus: #b9a6ff;
+      --radius: 14px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    html, body { background: var(--bg); color: var(--text); }
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 3px;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    /* Header */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(7, 8, 12, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .brand svg { flex: none; }
+    .wordmark {
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 42px;
+      padding: 0 16px;
+      border-radius: 10px;
+      font: inherit;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-ghost {
+      color: var(--text);
+      background: transparent;
+      border-color: var(--line-strong);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.04); }
+    .btn-primary {
+      color: #fff;
+      background: var(--purple);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset, 0 8px 24px rgba(124, 92, 255, 0.28);
+    }
+    .btn-primary:hover { background: #8b6fff; }
+    .btn-lg { height: 50px; padding: 0 22px; font-size: 1rem; }
+
+    /* Hero */
+    .hero {
+      padding: 48px 0 20px;
+    }
+    .hero-copy { max-width: 720px; }
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .kicker i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--purple);
+      box-shadow: 0 0 0 4px var(--purple-soft);
+    }
+    h1 {
+      font-size: clamp(2.15rem, 6vw, 3.65rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    h1 span { display: block; color: #d8dbe3; font-weight: 600; }
+    .lede {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 38rem;
+      margin-bottom: 28px;
+    }
+    .lede strong { color: var(--text); font-weight: 600; }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .fine {
+      color: var(--dim);
+      font-size: 0.875rem;
+    }
+
+    /* Product frame */
+    .shot {
+      padding: 28px 0 8px;
+    }
+    .frame {
+      position: relative;
+      border: 1px solid var(--line-strong);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #0a0d14;
+      box-shadow:
+        0 0 0 1px rgba(124, 92, 255, 0.08),
+        0 40px 80px -32px rgba(0, 0, 0, 0.7),
+        0 0 80px -20px rgba(124, 92, 255, 0.18);
+    }
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 72px;
+      background: linear-gradient(to top, var(--bg), transparent);
+      pointer-events: none;
+    }
+    .frame img {
+      width: 100%;
+      height: auto;
+    }
+    .frame-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      height: 36px;
+      padding: 0 14px;
+      background: #10131b;
+      border-bottom: 1px solid var(--line);
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #2a3140; }
+
+    /* Features */
+    .section { padding: 72px 0; }
+    .section h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      letter-spacing: -0.035em;
+      margin-bottom: 8px;
+    }
+    .section-lead {
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 36rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px 22px 24px;
+    }
+    .card h3 {
+      font-size: 1.0625rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .card p { color: var(--muted); font-size: 0.9375rem; }
+    .pay {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+    .chip {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #c9c4ff;
+      background: var(--purple-soft);
+      border: 1px solid rgba(124, 92, 255, 0.28);
+      border-radius: 999px;
+      padding: 4px 9px;
+    }
+
+    /* Split: roster */
+    .split {
+      display: grid;
+      gap: 28px;
+      align-items: center;
+    }
+    .split .frame::before { display: none; }
+    .ticks { list-style: none; margin-top: 18px; display: grid; gap: 10px; }
+    .ticks li {
+      display: flex;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.975rem;
+    }
+    .ticks li::before {
+      content: "";
+      flex: none;
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      border-radius: 50%;
+      background:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='%237c5cff' d='M8 0a8 8 0 110 16A8 8 0 018 0zm3.2 5.2L7 9.4 4.8 7.2 3.7 8.3 7 11.6l5.3-5.3z'/></svg>")
+        center / 18px no-repeat;
+    }
+
+    /* Proof */
+    .proof {
+      background: var(--bg-2);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .proof-card {
+      display: grid;
+      gap: 20px;
+      padding: 8px 0;
+    }
+    .eyebrow {
+      color: var(--purple);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .proof h2 { margin: 4px 0 8px; }
+    .quiet-link {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      text-underline-offset: 3px;
+    }
+    .quiet-link:hover { color: #cfc6ff; }
+    .shop-url {
+      color: var(--dim);
+      font-size: 0.9375rem;
+      margin-top: 10px;
+    }
+    .shop-url a { color: var(--muted); }
+
+    /* Price */
+    .price-block {
+      background: linear-gradient(180deg, #12101c 0%, var(--surface) 100%);
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 0 0 1px rgba(124, 92, 255, 0.1), 0 24px 60px -30px rgba(124, 92, 255, 0.35);
+    }
+    .price-block h2 { margin-bottom: 6px; }
+    .amount {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 6px;
+      margin: 18px 0 8px;
+    }
+    .amount b {
+      font-size: clamp(3.2rem, 8vw, 4.5rem);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      font-weight: 700;
+    }
+    .amount span { color: var(--muted); font-size: 1.125rem; }
+    .price-block .lede { margin: 0 auto 24px; }
+    .price-note { color: var(--dim); font-size: 0.875rem; margin-top: 14px; }
+    .seed {
+      color: var(--muted);
+      font-size: 0.9375rem;
+      max-width: 28rem;
+      margin: 0 auto 24px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 40px;
+      color: var(--dim);
+      font-size: 0.8125rem;
+    }
+    .foot {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .legal { display: flex; flex-wrap: wrap; gap: 14px; }
+    .legal a { color: var(--muted); text-decoration: none; }
+    .legal a:hover { color: var(--text); }
+
+    @media (min-width: 640px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+      .hero { padding-top: 72px; }
+    }
+    @media (min-width: 900px) {
+      .split { grid-template-columns: 1.15fr 0.85fr; }
+      .proof-card { grid-template-columns: 1.2fr 0.8fr; align-items: end; }
+      .price-block { padding: 48px 40px; }
+    }
+    @media (max-width: 400px) {
+      .wordmark { display: none; }
+      .btn { padding: 0 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Smartbooks home">
+        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <defs>
+            <mask id="sb">
+              <circle cx="16" cy="16" r="16" fill="#fff"/>
+              <rect x="8.6" y="8.6" width="4" height="4" rx="0.6" fill="#000"/>
+              <rect x="8.6" y="14" width="4" height="4" rx="0.6" fill="#000"/>
+              <rect x="8.6" y="19.4" width="4" height="4" rx="0.6" fill="#000"/>
+              <rect x="14" y="14" width="4" height="4" rx="0.6" fill="#000"/>
+              <rect x="14" y="19.4" width="4" height="4" rx="0.6" fill="#000"/>
+              <rect x="19.4" y="19.4" width="4" height="4" rx="0.6" fill="#000"/>
+            </mask>
+          </defs>
+          <circle cx="16" cy="16" r="16" fill="#fff" mask="url(#sb)"/>
+        </svg>
+        <span class="wordmark">smartbooks</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a class="btn btn-ghost" href="https://app.smartbooks365.com">Log in</a>
+        <a class="btn btn-primary" href="https://app.smartbooks365.com/start">Start 14-day trial</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-copy">
+        <p class="kicker"><i></i> For barbers and small shops</p>
+        <h1>Customers book the chair.<span>You don’t pick up the phone.</span></h1>
+        <p class="lede">Online booking for Irish barbers. They pick a time, pay, and show up. <strong>€25 a month. 14 days free.</strong></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="https://app.smartbooks365.com/start">Start 14-day trial</a>
+          <a class="btn btn-ghost btn-lg" href="https://app.smartbooks365.com">Log in</a>
+        </div>
+        <p class="fine">Then a card. No setup call.</p>
+      </div>
+    </section>
+
+    <section class="shot" aria-label="Product">
+      <div class="wrap">
+        <figure class="frame">
+          <div class="frame-bar" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <img src="bookings.png" width="1600" height="900" alt="Smartbooks day view: staff columns, timed bookings, and a purple Add booking button.">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="wrap">
+        <h2>What you get</h2>
+        <p class="section-lead">The same tools the shop uses to take the booking and run the day.</p>
+        <div class="grid">
+          <article class="card">
+            <h3>24/7 online booking</h3>
+            <p>Your customers pick a time when you’re closed. No missed calls. No back-and-forth texts.</p>
+          </article>
+          <article class="card">
+            <h3>Email reminders</h3>
+            <p>A reminder goes out before the appointment, so fewer people forget and fewer chairs sit empty.</p>
+          </article>
+          <article class="card">
+            <h3>Card payments</h3>
+            <p>Take payment when they book. Mastercard, Visa, Apple Pay, and Google Pay.</p>
+            <div class="pay" aria-label="Accepted payments">
+              <span class="chip">Mastercard</span>
+              <span class="chip">Visa</span>
+              <span class="chip">Apple Pay</span>
+              <span class="chip">Google Pay</span>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Day view &amp; roster</h3>
+            <p>See the day on one screen. Set the week’s shifts. Add or move a booking in a click.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap split">
+        <figure class="frame">
+          <img src="roster.png" width="1600" height="900" alt="Smartbooks roster week view with the shift editor open and a purple Save button.">
+        </figure>
+        <div>
+          <p class="eyebrow">Roster</p>
+          <h2>Who’s on. Who’s free.</h2>
+          <p class="section-lead" style="margin-bottom:0">Set start and finish times for the week. The day view follows the roster, so customers only book chairs that are actually working.</p>
+          <ul class="ticks">
+            <li>Week view for the whole team</li>
+            <li>Shift editor — start, finish, save</li>
+            <li>Bookings sit on the people who are in</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof section" id="proof">
+      <div class="wrap proof-card">
+        <div>
+          <p class="eyebrow">Live in Finglas</p>
+          <h2>BOXX Barber Shop books on Smartbooks.</h2>
+          <p class="lede" style="margin-bottom:0">Customers at BOXX in Finglas book online at boxx.ie/book. That’s the live product — not a demo.</p>
+          <p class="shop-url">boxx.ie/book → Smartbooks</p>
+        </div>
+        <div>
+          <a class="quiet-link" href="https://book.smartbooks365.com/shops/boxx-finglas">See it live</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="price">
+      <div class="wrap">
+        <div class="price-block">
+          <p class="eyebrow">Simple price</p>
+          <h2>One shop. One price.</h2>
+          <div class="amount"><b>€25</b><span>/ month</span></div>
+          <p class="lede">14 days free. Then a card. No setup call.</p>
+          <p class="seed">You start with Haircut €22, Haircut &amp; beard €32, Kids cut €18. Change them if you want.</p>
+          <a class="btn btn-primary btn-lg" href="https://app.smartbooks365.com/start">Start 14-day trial</a>
+          <p class="price-note">Already on it? <a class="quiet-link" href="https://app.smartbooks365.com">Log in</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <p>© 2026 Advanced Cloud Services Limited. CRO 614818.</p>
+      <nav class="legal" aria-label="Legal">
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <a href="https://app.smartbooks365.com">Log in</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
