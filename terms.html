@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Terms — Smartbooks</title>
-  <meta name="description" content="Terms for Smartbooks, online booking for Irish barbers and small shops.">
+  <meta name="description" content="Terms for Smartbooks, the booking product from Advanced Cloud Services Limited.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,212 +12,73 @@
   <style>
     :root {
       --bg: #07080c;
-      --surface: #12151d;
       --line: rgba(255, 255, 255, 0.08);
-      --line-strong: rgba(255, 255, 255, 0.14);
       --text: #f5f6f8;
       --muted: #9aa3b2;
       --dim: #6d7686;
       --purple: #7c5cff;
       --focus: #b9a6ff;
-      --max: 1120px;
+      --max: 720px;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { background: var(--bg); color: var(--text); }
     body {
       font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
       font-size: 16px;
-      line-height: 1.5;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
     }
     a { color: inherit; }
-    :focus-visible {
-      outline: 2px solid var(--focus);
-      outline-offset: 3px;
-    }
-
-    .wrap {
-      width: min(var(--max), calc(100% - 32px));
-      margin-inline: auto;
-    }
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(7, 8, 12, 0.78);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--line);
-    }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      gap: 16px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-    .brand svg { flex: none; }
-    .wordmark {
-      font-size: 1.125rem;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      color: #fff;
-    }
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: 42px;
-      padding: 0 16px;
-      border-radius: 10px;
-      font: inherit;
-      font-size: 0.9375rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      text-decoration: none;
-      border: 1px solid transparent;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
-    }
-    .btn:active { transform: translateY(1px); }
-    .btn-ghost {
-      color: var(--text);
-      background: transparent;
-      border-color: var(--line-strong);
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,0.04); }
-    .btn-primary {
-      color: #fff;
-      background: var(--purple);
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.06) inset, 0 8px 24px rgba(124, 92, 255, 0.28);
-    }
-    .btn-primary:hover { background: #8b6fff; }
-
-    .legal-page {
-      padding: 48px 0 80px;
-      max-width: 40rem;
-    }
-    .legal-page h1 {
-      font-size: clamp(1.75rem, 4vw, 2.25rem);
-      letter-spacing: -0.04em;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .date {
-      color: var(--dim);
-      font-size: 0.875rem;
-      margin-bottom: 32px;
-    }
-    .legal-page h2 {
-      font-size: 1.0625rem;
-      letter-spacing: -0.02em;
-      margin: 28px 0 8px;
-    }
-    .legal-page p {
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-    .legal-page a { color: var(--text); text-underline-offset: 3px; }
-    .legal-page a:hover { color: #cfc6ff; }
-    address {
-      font-style: normal;
-      color: var(--muted);
-    }
-
-    footer {
-      border-top: 1px solid var(--line);
-      padding: 28px 0 40px;
-      color: var(--dim);
-      font-size: 0.8125rem;
-    }
-    .foot {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 24px;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .legal { display: flex; flex-wrap: wrap; gap: 14px; }
+    :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin-inline: auto; }
+    .header { border-bottom: 1px solid var(--line); background: rgba(7, 8, 12, 0.78); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; letter-spacing: -0.03em; }
+    .back { color: var(--muted); font-size: 0.9375rem; text-decoration: none; }
+    .back:hover { color: var(--text); }
+    main { padding: 48px 0 72px; }
+    .kicker { color: var(--purple); font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); letter-spacing: -0.04em; line-height: 1.15; margin-bottom: 20px; }
+    p { color: var(--muted); margin-bottom: 16px; }
+    address { font-style: normal; color: var(--text); margin: 16px 0 24px; }
+    .updated { color: var(--dim); font-size: 0.875rem; }
+    footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--dim); font-size: 0.8125rem; }
+    .foot { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
+    .legal { display: flex; gap: 14px; }
     .legal a { color: var(--muted); text-decoration: none; }
     .legal a:hover { color: var(--text); }
-
-    @media (max-width: 400px) {
-      .wordmark { display: none; }
-      .btn { padding: 0 12px; }
-    }
   </style>
 </head>
 <body>
   <header class="header">
     <div class="wrap header-inner">
-      <a class="brand" href="index.html" aria-label="Smartbooks home">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <defs>
-            <mask id="sb">
-              <circle cx="16" cy="16" r="16" fill="#fff"/>
-              <rect x="8.6" y="8.6" width="4" height="4" rx="0.6" fill="#000"/>
-              <rect x="8.6" y="14" width="4" height="4" rx="0.6" fill="#000"/>
-              <rect x="8.6" y="19.4" width="4" height="4" rx="0.6" fill="#000"/>
-              <rect x="14" y="14" width="4" height="4" rx="0.6" fill="#000"/>
-              <rect x="14" y="19.4" width="4" height="4" rx="0.6" fill="#000"/>
-              <rect x="19.4" y="19.4" width="4" height="4" rx="0.6" fill="#000"/>
-            </mask>
-          </defs>
-          <circle cx="16" cy="16" r="16" fill="#fff" mask="url(#sb)"/>
-        </svg>
-        <span class="wordmark">smartbooks</span>
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <a class="btn btn-ghost" href="https://app.smartbooks365.com">Log in</a>
-        <a class="btn btn-primary" href="https://app.smartbooks365.com/start">Start 14-day trial</a>
-      </nav>
+      <a class="brand" href="/">smartbooks</a>
+      <a class="back" href="/">Back</a>
     </div>
   </header>
-
-  <main class="wrap legal-page">
-    <h1>Terms</h1>
-    <p class="date">August 2026</p>
-
-    <h2>Who we are</h2>
-    <p>Smartbooks is online booking for Irish barbers and small shops. It is run by Advanced Cloud Services Limited, an Irish company, CRO 614818.</p>
-    <p>
+  <main>
+    <div class="wrap">
+      <p class="kicker">Terms</p>
+      <h1>Using Smartbooks</h1>
+      <p>Smartbooks is a paid booking product for shops in Ireland. You get 14 days free. After that it is €25 a month, charged to a card.</p>
+      <p>The product is provided by Advanced Cloud Services Limited (ACS Ltd), CRO 614818.</p>
       <address>
         16 Glasnevin Downs<br>
         Dublin 11<br>
         D11 P2E9<br>
         Ireland
       </address>
-    </p>
-
-    <h2>The offer</h2>
-    <p>You can start at <a href="https://app.smartbooks365.com/start">app.smartbooks365.com/start</a>. 14 days free. Then €25 a month on a card.</p>
-
-    <h2>These terms</h2>
-    <p>These are short terms. We will expand them. Until then, write to us at the address above.</p>
+      <p>Open a book at app.smartbooks365.com/start. Your customers book at the shop link we host on book.smartbooks365.com.</p>
+      <p>These are short terms. We will expand them. Write to the address above if something is unclear.</p>
+      <p class="updated">August 2026</p>
+    </div>
   </main>
-
   <footer>
     <div class="wrap foot">
       <p>© 2026 Advanced Cloud Services Limited. CRO 614818.</p>
       <nav class="legal" aria-label="Legal">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
         <a href="https://app.smartbooks365.com">Log in</a>
       </nav>
     </div>

@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/api/contact-us",
+      "destination": "https://app.smartbooks365.com/start",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/#price",
+      "permanent": false
+    }
+  ]
+}
